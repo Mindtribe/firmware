@@ -38,7 +38,7 @@
 #else
 	#define TOTAL_USARTS		2
 #endif
-#define SERIAL_BUFFER_SIZE      64
+#define SERIAL_BUFFER_SIZE      2048
 
 // Pre-defined USART configurations
 #define SERIAL_7E1 (uint32_t)(SERIAL_DATA_BITS_7 | SERIAL_PARITY_EVEN | SERIAL_STOP_BITS_1)
