@@ -91,13 +91,13 @@ public:
 class Serial4LogHandler: public StreamLogHandler {
 public:
     explicit Serial4LogHandler(LogLevel level = LOG_LEVEL_INFO, LogCategoryFilters filters = {}) :
-            StreamLogHandler(Serial, level, filters) {
+            StreamLogHandler(Serial4, level, filters) {
         Serial4.begin(115200);
         LogManager::instance()->addHandler(this);
     }
 
     explicit Serial4LogHandler(int baud, LogLevel level = LOG_LEVEL_INFO, LogCategoryFilters filters = {}) :
-            StreamLogHandler(Serial, level, filters) {
+            StreamLogHandler(Serial4, level, filters) {
         Serial4.begin(baud);
         LogManager::instance()->addHandler(this);
     }
