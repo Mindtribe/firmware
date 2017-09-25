@@ -87,6 +87,28 @@ public:
 
 #endif // Wiring_USBSerial1
 
+#if Wiring_Serial4
+class Serial4LogHandler: public StreamLogHandler {
+public:
+    explicit Serial4LogHandler(LogLevel level = LOG_LEVEL_INFO, LogCategoryFilters filters = {}) :
+            StreamLogHandler(Serial, level, filters) {
+        Serial4.begin(115200);
+        LogManager::instance()->addHandler(this);
+    }
+
+    explicit Serial4LogHandler(int baud, LogLevel level = LOG_LEVEL_INFO, LogCategoryFilters filters = {}) :
+            StreamLogHandler(Serial, level, filters) {
+        Serial4.begin(baud);
+        LogManager::instance()->addHandler(this);
+    }
+
+    virtual ~Serial4LogHandler() {
+        LogManager::instance()->removeHandler(this);
+        Serial4.end();
+    }
+};
+#endif // Wiring_Serial4
+
 } // namespace spark
 
 // Compatibility API
